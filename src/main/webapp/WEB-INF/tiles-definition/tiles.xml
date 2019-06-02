@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+    <definition name="scripts" template="/WEB-INF/view/scripts.jsp">
+    </definition>
+    <definition name="template"
+                template="/WEB-INF/view/layout.jsp">
+        <put-attribute name="scripts" value="/WEB-INF/view/scripts.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/view/menu.jsp"/>
+        <put-attribute name="content" value=""/>
+        <put-attribute name="title" value="Document management system"/>
+    </definition>
+    <definition name="login" extends="template">
+        <put-attribute name="content" value="/WEB-INF/view/login.jsp"/>
+    </definition>
+    <definition name="home" extends="template">
+        <put-attribute name="content" value="/WEB-INF/view/home.jsp"/>
+    </definition>
+    <definition name="company.all" extends="template">
+        <put-attribute name="content" value="/WEB-INF/view/company/all.jsp"/>
+        <put-attribute name="title" value="Companies"/>
+    </definition>
+    <definition name="company.add" extends="template">
+        <put-attribute name="content" value="/WEB-INF/view/company/edit.jsp"/>
+        <put-attribute name="title" value="Add company"/>
+    </definition>
+    <definition name="company.preview" extends="template">
+        <put-attribute name="content" value="/WEB-INF/view/company/edit.jsp"/>
+        <put-attribute name="title" value="Preview company"/>
+    </definition>
+    <definition name="company.edit" extends="template">
+        <put-attribute name="content" value="/WEB-INF/view/company/edit.jsp"/>
+        <put-attribute name="title" value="Edit company"/>
+    </definition>
+    <definition name="user.all" extends="template">
+        <put-attribute name="content" value="/WEB-INF/view/user/all.jsp"/>
+        <put-attribute name="title" value="Users"/>
+    </definition>
+    <definition name="user.add" extends="template">
+        <put-attribute name="content" value="/WEB-INF/view/user/edit.jsp"/>
+        <put-attribute name="title" value="Add user"/>
+    </definition>
+    <definition name="user.preview" extends="template">
+        <put-attribute name="content" value="/WEB-INF/view/user/edit.jsp"/>
+        <put-attribute name="title" value="Preview user"/>
+    </definition>
+    <definition name="user.edit" extends="template">
+        <put-attribute name="content" value="/WEB-INF/view/user/edit.jsp"/>
+        <put-attribute name="title" value="Edit user"/>
+    </definition>
+    <definition name="document.type.add" extends="template">
+        <put-attribute name="content" value="/WEB-INF/view/document_type/edit.jsp"/>
+        <put-attribute name="title" value="Add document type"/>
+    </definition>
+    <definition name="document.type.edit" extends="template">
+        <put-attribute name="content" value="/WEB-INF/view/document_type/edit.jsp"/>
+        <put-attribute name="title" value="Edit document type"/>
+    </definition>
+    <definition name="document.type.all" extends="template">
+        <put-attribute name="content" value="/WEB-INF/view/document_type/all.jsp"/>
+        <put-attribute name="title" value="Document type list"/>
+    </definition>
+    <definition name="document.add" extends="template">
+        <put-attribute name="content" value="/WEB-INF/view/document/edit.jsp"/>
+        <put-attribute name="title" value="Add document"/>
+    </definition>
+    <definition name="document.all" extends="template">
+        <put-attribute name="content" value="/WEB-INF/view/document/all.jsp"/>
+        <put-attribute name="title" value="Document list"/>
+    </definition>
+
+    <definition name="process.all" extends="template">
+        <put-attribute name="content" value="/WEB-INF/view/process/all.jsp"/>
+        <put-attribute name="title" value="Process list"/>
+    </definition>
+    <definition name="error.404" extends="template">
+        <put-attribute name="content" value="/WEB-INF/view/error/not_found.jsp"/>
+    </definition>
+</tiles-definitions>
