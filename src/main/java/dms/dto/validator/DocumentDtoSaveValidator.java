@@ -5,6 +5,7 @@ import dms.dto.DocumentDto;
 import dms.exception.DmsException;
 import dms.model.DescriptorType;
 import dms.model.DocumentType;
+import dms.repository.ActivityRepository;
 import dms.repository.DocumentTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -19,6 +20,9 @@ public class DocumentDtoSaveValidator implements DtoValidator<DocumentDto> {
     @Autowired
     private DocumentTypeRepository documentTypeRepository;
 
+    @Autowired
+    private ActivityRepository activityRepository;
+
     @Override
     public void validate(DocumentDto documentDto) throws Exception {
         List<String> errors = new ArrayList<>();
@@ -29,6 +33,17 @@ public class DocumentDtoSaveValidator implements DtoValidator<DocumentDto> {
         if (documentDto.getFile() == null || documentDto.getFile().length == 0) {
             errors.add("File is required filed");
         }
+
+        if (documentDto.getInputActivityId() != null && !documentDto.getInputActivityId().toString().isEmpty() && !activityRepository.findById(documentDto.getInputActivityId()).isPresent()) {
+            errors.add("You must choose valid activity");
+        }
+        if (documentDto.getOutputActivityId() != null && !documentDto.getOutputActivityId().toString().isEmpty() && !activityRepository.findById(documentDto.getOutputActivityId()).isPresent()) {
+            errors.add("You must choose valid activity");
+        }
+        if (documentDto.getOutputActivityId() == null && documentDto.getInputActivityId() == null) {
+            errors.add("You must assignee document to at least one activity");
+        }
+
         if (documentDto.getDocumentTypeId() == null || documentTypeRepository.getOne(documentDto.getDocumentTypeId()) == null) {
             errors.add("Document type is required field");
         } else {
@@ -42,8 +57,7 @@ public class DocumentDtoSaveValidator implements DtoValidator<DocumentDto> {
                         exists = true;
                         if (descriptorType.isMandatory() && (descriptorDto.getValue() == null || descriptorDto.getValue().toString().isEmpty())) {
                             errors.add(descriptorType.getName() + " is reqired filed");
-                        }
-                        if (descriptorDto.getValue() != null) {
+                        } else if (descriptorDto.getValue() != null && !descriptorDto.toString().isEmpty()) {
 
                             switch (descriptorType.getType()) {
                                 case Numeric:

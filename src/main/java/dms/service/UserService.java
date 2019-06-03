@@ -14,7 +14,7 @@ public interface UserService {
 
     public User save(UserDto userDto) throws Exception;
 
-    public boolean deleteById(Long id);
+    public boolean deleteById(Long id) throws ResourceNotFoundException;
 
     public User getByUsername(String username);
 }

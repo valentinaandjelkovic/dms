@@ -2,6 +2,7 @@ package dms.service.impl;
 
 import dms.dto.CompanyDto;
 import dms.dto.formatter.CompanyDtoFormatter;
+import dms.dto.validator.CompanyDtoDeleteValidator;
 import dms.dto.validator.CompanyDtoSaveValidator;
 import dms.exception.ResourceNotFoundException;
 import dms.model.Company;
@@ -27,6 +28,9 @@ public class CompanyServiceImpl implements CompanyService {
     @Autowired
     private CompanyDtoFormatter formatter;
 
+    @Autowired
+    private CompanyDtoDeleteValidator deleteValidator;
+
     @Override
     public List<Company> getAll() {
         return companyRepository.findAll();
@@ -46,14 +50,11 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public boolean deleteById(Long id) throws ResourceNotFoundException {
+    public void deleteById(Long id) throws Exception {
         Optional<Company> company = companyRepository.findById(id);
         if (!company.isPresent()) throw new ResourceNotFoundException("Company not found");
-        try {
-            companyRepository.deleteById(id);
-            return true;
-        } catch (Exception ex) {
-            return false;
-        }
+        deleteValidator.validate(new CompanyDto(id));
+        companyRepository.deleteById(id);
+
     }
 }

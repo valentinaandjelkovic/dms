@@ -15,7 +15,7 @@ public class Company implements Entity {
     @Column(name = "COMPANY_NUMBER", nullable = false)
     private String companyNumber;
 
-    @OneToMany(mappedBy = "company")
+    @OneToMany(mappedBy = "company", orphanRemoval = true)
     private Set<User> users;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "company")

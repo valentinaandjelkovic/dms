@@ -82,7 +82,7 @@
                     table.draw();
                 },
                 error: function (error) {
-                    $("#message_div").message_error(error, "Delete company");
+                    $('#message_div').message_error(error.responseJSON.errors.join("<br>"), 'Delete company');
                 }
             });
         }

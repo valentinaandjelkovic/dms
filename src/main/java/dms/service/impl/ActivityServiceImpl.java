@@ -33,4 +33,9 @@ public class ActivityServiceImpl implements ActivityService {
     public List<Activity> getByProcessId(Long processId) {
         return activityRepository.findByProcess(processId);
     }
+
+    @Override
+    public List<Activity> getByCompany(Long companyId) {
+        return activityRepository.findByCompany(companyId);
+    }
 }

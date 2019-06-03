@@ -43,6 +43,8 @@ public class Document {
     private String fileName;
 
 
+
+
     public Document() {
         this.descriptorList = new ArrayList<>();
     }
@@ -123,4 +125,5 @@ public class Document {
     public void setFileName(String fileName) {
         this.fileName = fileName;
     }
+
 }

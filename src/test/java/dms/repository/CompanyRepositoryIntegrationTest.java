@@ -31,9 +31,10 @@ public class CompanyRepositoryIntegrationTest {
 
         company = companyRepository.save(company);
 
-        System.out.println("Company id " + company.getId());
         assertNotNull(company.getId());
         assertTrue(company.getId() > 0);
+        assertEquals("Test", company.getName());
+        assertEquals("123456788", company.getCompanyNumber());
     }
 
     @Test
@@ -41,7 +42,6 @@ public class CompanyRepositoryIntegrationTest {
         Company company = new Company(null, "Test 2", "123456789");
         company = companyRepository.save(company);
 
-        System.out.println("Company id " + company.getId());
 
         List<Company> result = companyRepository.findByName("Test 2");
         assertFalse(result.isEmpty());
@@ -50,7 +50,7 @@ public class CompanyRepositoryIntegrationTest {
     }
 
     @Test
-    public void testFindByCompanyNumber(){
+    public void testFindByCompanyNumber() {
         Company company = new Company(null, "Test 3", "123456788");
         company = companyRepository.save(company);
 
@@ -60,7 +60,7 @@ public class CompanyRepositoryIntegrationTest {
         assertEquals(result.get(0).getId(), company.getId());
     }
 
-    public void testDeleteById(){
+    public void testDeleteById() {
         companyRepository.deleteById(2l);
         Company company = companyRepository.getOne(2l);
 

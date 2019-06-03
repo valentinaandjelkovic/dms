@@ -91,7 +91,7 @@
                     table.draw();
                 },
                 error: function (error) {
-                    $("#message_div").message_error(error, "Delete user");
+                    $('#message_div').message_error(error.responseJSON.errors.join("<br>"), 'Delete user');
                 }
             });
         }

@@ -18,6 +18,12 @@ public class CompanyDto implements EntityDto {
     public CompanyDto() {
     }
 
+    public CompanyDto(Long id) {
+        this.id = id;
+
+    }
+
+
     public CompanyDto(Long id, String name, String companyNumber) {
         this.id = id;
         this.name = name;

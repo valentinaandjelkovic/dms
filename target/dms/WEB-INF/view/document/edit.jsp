@@ -22,6 +22,25 @@
             <input type="file" id="file" name="file">
         </div>
     </div>
+
+    <div class="form-group row">
+        <label for="inputAcitvityId" class="col-sm-4 col-form-label">Input for activity</label>
+        <div class="col-sm-6">
+            <form:select path="inputActivityId" class="form-control" disabled="${readonly}">
+                <form:option value=""> None selected </form:option>
+                <form:options items="${inputActivityList}" itemValue="id" itemLabel="name"></form:options>
+            </form:select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="outputActivityId" class="col-sm-4 col-form-label">Output for activity</label>
+        <div class="col-sm-6">
+            <form:select path="outputActivityId" class="form-control" disabled="${readonly}">
+                <form:option value=""> None selected </form:option>
+                <form:options items="${outputActivityList}" itemValue="id" itemLabel="name"></form:options>
+            </form:select>
+        </div>
+    </div>
     <div class="form-group row">
         <label for="name" class="col-sm-4 col-form-label">Document type<span
                 class="text-danger required">*</span></label>
@@ -141,6 +160,8 @@
             id: $("#id").val(),
             name: $("#name").val(),
             documentTypeId: $("#documentTypeId").val(),
+            inputActivityId: $("#inputActivityId").val(),
+            outputActivityId: $("#outputActivityId").val(),
             descriptorDtoList: descriptors
         }
         console.log(documentDto);

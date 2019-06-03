@@ -9,4 +9,6 @@ public interface ActivityService {
     Activity save(ActivityDto activityDto) throws Exception;
 
     List<Activity> getByProcessId(Long processId);
+
+    List<Activity> getByCompany(Long companyId);
 }

@@ -14,5 +14,5 @@ public interface CompanyService {
 
     public Company save(CompanyDto companyDto) throws Exception;
 
-    public boolean deleteById(Long id) throws ResourceNotFoundException;
+    public void deleteById(Long id) throws Exception;
 }

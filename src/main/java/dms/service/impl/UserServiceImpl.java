@@ -4,6 +4,7 @@ import dms.dto.UserDto;
 import dms.dto.formatter.UserDtoFormatter;
 import dms.dto.validator.UserDtoSaveValidator;
 import dms.exception.ResourceNotFoundException;
+import dms.model.Company;
 import dms.model.User;
 import dms.repository.UserRepository;
 import dms.service.UserService;
@@ -54,7 +55,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean deleteById(Long id) {
+    public boolean deleteById(Long id) throws ResourceNotFoundException {
+        Optional<User> user = userRepository.findById(id);
+        if (!user.isPresent()) throw new ResourceNotFoundException("User not found");
         try {
             userRepository.deleteById(id);
             return true;

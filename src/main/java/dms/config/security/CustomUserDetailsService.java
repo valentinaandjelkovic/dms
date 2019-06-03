@@ -9,6 +9,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -34,7 +35,7 @@ public class CustomUserDetailsService implements UserDetailsService {
             throw new UsernameNotFoundException(
                     "No user found with username: " + username);
         }
-
+        System.out.println("Password encoding: " + new BCryptPasswordEncoder().encode("test"));
         return new org.springframework.security.core.userdetails.User
                 (user.getUsername(),
                         user.getPassword(),

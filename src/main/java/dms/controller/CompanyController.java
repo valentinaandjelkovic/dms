@@ -77,7 +77,7 @@ public class CompanyController {
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     public ResponseEntity delete(HttpServletResponse response, @PathVariable("id") Long id) throws Exception {
-        boolean result = companyService.deleteById(id);
-        return new ResponseEntity(result ? "Company was successfully delete!" : "You can not delete company, try again!", result ? HttpStatus.OK : HttpStatus.BAD_REQUEST);
+        companyService.deleteById(id);
+        return new ResponseEntity("Company was successfully delete!", HttpStatus.OK);
     }
 }

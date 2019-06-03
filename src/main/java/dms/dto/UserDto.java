@@ -48,6 +48,16 @@ public class UserDto implements EntityDto {
         this.roleIds = new ArrayList<>();
     }
 
+    public UserDto(Long id, @NotEmpty(message = "First name can not be empty") @Size(min = 1, max = 30, message = "First name must be between 1 and 30 characters") String firstName, @NotEmpty(message = "Last name can not be empty") @Size(min = 1, max = 30, message = "Last name must be between 1 and 30 characters") String lastName, @NotEmpty(message = "Username can not be empty") @Size(min = 1, max = 20, message = "Username must be between 1 and 20 characters") String username, @NotEmpty(message = "Password can not be empty") String password, CompanyDto companyDto, List<RoleDto> roleDtoList) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.password = password;
+        this.companyDto = companyDto;
+        this.roleDtoList = roleDtoList;
+    }
+
     public String getFirstName() {
         return firstName;
     }

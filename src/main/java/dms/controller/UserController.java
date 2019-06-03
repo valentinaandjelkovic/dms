@@ -77,7 +77,7 @@ public class UserController {
 
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-    public ResponseEntity delete(@PathVariable Long id) {
+    public ResponseEntity delete(@PathVariable Long id) throws ResourceNotFoundException {
         boolean result = userService.deleteById(id);
         return new ResponseEntity(result ? "User was successfully delete!" : "You can not delete user, try again!", result ? HttpStatus.OK : HttpStatus.BAD_REQUEST);
     }

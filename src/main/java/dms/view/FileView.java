@@ -1,4 +1,4 @@
-package dms;
+package dms.view;
 
 
 import dms.model.Document;

@@ -15,6 +15,8 @@ public class DocumentDto implements EntityDto {
     private Long documentTypeId;
     private String fileType;
     private String fileName;
+    private Long inputActivityId;
+    private Long outputActivityId;
 
 //    private MultipartFile file;
 
@@ -123,5 +125,21 @@ public class DocumentDto implements EntityDto {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    public Long getInputActivityId() {
+        return inputActivityId;
+    }
+
+    public void setInputActivityId(Long inputActivityId) {
+        this.inputActivityId = inputActivityId;
+    }
+
+    public Long getOutputActivityId() {
+        return outputActivityId;
+    }
+
+    public void setOutputActivityId(Long outputActivityId) {
+        this.outputActivityId = outputActivityId;
     }
 }
