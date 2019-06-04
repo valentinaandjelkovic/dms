@@ -1,5 +1,5 @@
-"# dms" 
-##Database Setup
+##Document Management System 
+###Database Setup
 
 To initially populate database use database.sql script from resources directory. 
 Login credentials: 
